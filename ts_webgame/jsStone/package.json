@@ -1,0 +1,15 @@
+{
+  "name": "ts_webgame",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "juyoung",
+  "license": "MIT",
+  "dependencies": {
+    "can-use-dom": "^0.1.0",
+    "typescript": "^4.1.3"
+  }
+}
