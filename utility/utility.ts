@@ -28,7 +28,7 @@ const result = Array.prototype.map.call<
   [(item: number) => string],
   string[]
 >([1, 2, 3], (item) => {
-  //call(this(map을 가리킴): Function, thisArg([1,2,3]배열을 가리킴): any, ...argArray((item)=> item.toFixed(1) 콜백함수를 가리킴, nest를 쓴 곳에는 배열이 와야한다=>[(item:number)=>string]): any[]): any;
+  //call(this(map을 가리킴): Function, thisArg([1,2,3]배열을 가리킴): any, ...argArray((item)=> item.toFixed(1) 콜백함수를 가리킴, nest를 쓴 곳에는 배열이 와야한다=>[(item:number)=>string]: any[]): any;
   return item.toFixed(1);
 });
 //[1,2,3].map((item)=> item.toFixed(1));
