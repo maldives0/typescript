@@ -7,14 +7,35 @@ import {
   LogInRequestAction,
   LogInSuccessAction,
   LogOutAction,
-} from "../actions/user";
-const initialState = {
+} from '../actions/user';
+export interface UserState {
+  isLoggingIn: boolean;
+  data: {
+    nickname: string;
+  } | null;
+}
+const initialState: UserState = {
   isLoggingIn: false,
   data: null,
 };
-
-const userReducer = (prevState = initialState, action) => {
+type UserReducerAction = LogInRequestAction | LogInSuccessAction | LogInFailureAction | LogOutAction;
+const userReducer = (prevState = initialState, action: UserReducerAction) => {
   switch (action.type) {
+    // case LOG_IN_REQUEST:
+    //   draft.data = null;
+    //   draft.isLoggingIn = true;
+    //   break;
+    // case LOG_IN_SUCCESS:
+    //   draft.data = action.data;
+    //   draft.isLoggingIn = false;
+    //   break;
+    // case LOG_IN_FAILURE:
+    //   draft.data = null;
+    //   draft.isLoggingIn = false;
+    //   break;
+    // case LOG_OUT:
+    //   draft.data = null;
+    //   break;
     default:
       return prevState;
   }

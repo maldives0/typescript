@@ -1,11 +1,17 @@
 import { produce } from 'immer';
 import { ADD_POST, AddPostAction } from '../actions/post';
 
-const initialState=[]
+const initialState: string[] = [];
 
-const postReducer=(prevState=initialState, action)=>{
-    switch(action.type)
+const postReducer = (
+  prevState = initialState,
+  action: AddPostAction,
+): string[] => {
+  switch (action.type) {
+    case ADD_POST:
+      return [...prevState, action.data];
     default:
-        break;
-}
-export default postReducer
+      return prevState;
+  }
+};
+export default postReducer;

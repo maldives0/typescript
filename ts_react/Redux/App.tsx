@@ -1,4 +1,5 @@
 import * as React from "react";
 import { Component } from "react";
-class App extends Component {}
+
+const App =()=> {}
 export default App;
