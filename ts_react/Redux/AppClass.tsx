@@ -1,11 +1,11 @@
 
 import * as React from "react";
 import { Component } from "react";
-import {Dispatch} from 'redux';
-import {logIn, logOut, } from './actions/user'
+import {connect} from 'react-redux';
+import {logIn, logOut, ThunkDispatch ,RequestData} from './actions/user'
 import {UserState} from './reducers/user'
 import {RootState} from './reducers'
-import {RequestData} from './actions/user'
+
 interface StateToProps{
   user: UserState
   
@@ -17,7 +17,7 @@ interface DispatchToProps {
 class App extends Component <StateToProps & DispatchToProps>{
     onClick = () => {
         this.props.dispatchLogIn({
-          id: 'zerocho',
+          id: 'momo',
           password: '비밀번호',
         });
       };
@@ -45,8 +45,8 @@ const mapStateToProps = (state: RootState)=>({
     user: state.user,
     posts: state.posts
 })
-const mapDispatchToProps = (dispatch: Dispatch)=>({
-    dispatchLogIn:(data)=>dispatch(logIn(data)),
+const mapDispatchToProps = (dispatch: ThunkDispatch)=>({
+    dispatchLogIn:(data:RequestData)=>dispatch(logIn(data)),
     dispatchLogOut:()=>dispatch(logOut()),
 })
 export default connect(mapStateToProps, mapDispatchToProps)(App);

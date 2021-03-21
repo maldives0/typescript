@@ -52,19 +52,20 @@ export const logOut = (): LogOutAction => {
   };
 };
 
-interface ThunkDispatch {
+export interface ThunkDispatch {
   (thunkAction: ThunkAction): void; //ThunkAction인 경우 리턴값이 없다, 아래 login의 경우
   <A>(action: A): A; //임의의 action인 경우 리턴값이 있다
   <TAction>(action: TAction | ThunkAction): TAction; //ThunkAction인 경우 또는 임의의 action인 경우= overloading (다양한 경우 고려하기)
 }
 
-type ThunkAction = (dispatch: ThunkDispatch) => void;
+export type ThunkAction = (dispatch: ThunkDispatch) => void;
 export const logIn = (data: RequestData): ThunkAction => {
-  // async action creator, 여기서는 ThunkAction
+  // async action creator,
   return (
+    //여기서는 ThunkAction
     dispatch: Dispatch<LogInRequestAction | LogInSuccessAction | LogInFailureAction | LogOutAction | AddPostAction>,
   ) => {
-    // async action
+    // async action, 여러 action을 한꺼번에 실행하기
     dispatch(logInRequest(data));
     try {
       setTimeout(() => {
