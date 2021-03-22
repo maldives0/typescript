@@ -24,7 +24,5 @@ Hashtag.init(
     collate: 'utf8mb4_general_ci',
   },
 );
-export const associate = (db: dbType) => {
-  //   db.Hashtag.hasMany(db.Hashtag, { as: 'Hashtags' });
-};
+export const associate = (db: dbType) => {};
 export default Hashtag;
