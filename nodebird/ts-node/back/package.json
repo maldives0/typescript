@@ -23,7 +23,6 @@
     "@types/multer-s3": "^2.7.9",
     "@types/node": "^14.14.35",
     "@types/passport": "^1.0.6",
-    "@types/passport-local": "^1.0.33",
     "aws-sdk": "^2.868.0",
     "bcrypt": "^5.0.1",
     "cookie-parser": "^1.4.5",
