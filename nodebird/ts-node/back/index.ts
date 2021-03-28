@@ -8,7 +8,10 @@ import * as cookieParser from 'cookie-parser';
 import * as expressSession from 'express-session';
 import * as passport from 'passport';
 import { sequelize } from './models';
-
+import userRouter from './routes/user';
+import postRouter from './routes/post';
+import postsRouter from './routes/posts';
+import hashtagRouter from './routes/hashtag';
 import { Request, Response, NextFunction, Application } from 'express';
 const app: Application = express();
 const prod: boolean = process.env.NODE_ENV === 'production';
@@ -63,8 +66,17 @@ app.use(
 );
 app.use(passport.initialize());
 app.use(passport.session());
+
+app.use('/post', postRouter);
+app.use('/posts', postsRouter);
+app.use('/hashtag', hashtagRouter);
+app.use('/user', userRouter);
 app.get('/', (req: Request, res: Response, next: NextFunction) => {
   res.send('hello');
+});
+app.use((err: any, req: Request, res: Response, next: NextFunction) => {
+  console.error(err);
+  res.status(500).send('서버 에러 발생!');
 });
 app.listen(app.get('port'), () => {
   console.log(`server is running on ${app.get('port')}`);

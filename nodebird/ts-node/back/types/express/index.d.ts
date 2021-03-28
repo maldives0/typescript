@@ -1,5 +1,5 @@
 // customizing typing
-import IUser from '../models/user';
+import IUser from '../../models/user';
 //export{} global은 import나 export가 파일 안에 반드시 있어야 한다
 //Augmentations for the global scope can only be directly nested in external modules or ambient module declarations.ts
 

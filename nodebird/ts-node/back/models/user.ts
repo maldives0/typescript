@@ -1,22 +1,22 @@
 import {
-  BelongsToManyAddAssociationMixin,
-  BelongsToManyGetAssociationsMixin,
-  BelongsToManyRemoveAssociationMixin,
-  HasManyGetAssociationsMixin,
-  DataTypes,
   Model,
+  DataTypes,
+  BelongsToManyGetAssociationsMixin,
+  HasManyGetAssociationsMixin,
+  BelongsToManyRemoveAssociationMixin,
+  BelongsToManyAddAssociationMixin,
 } from 'sequelize';
-import { sequelize } from './sequelize';
 import { dbType } from './index';
 import Post from './post';
+import { sequelize } from './sequelize';
 
 class User extends Model {
   public readonly id!: number;
   public nickname!: string;
   public userId!: string;
-  public password?: string;
+  public password!: string;
   public readonly createdAt!: Date;
-  public readonly updateAt!: Date;
+  public readonly updatedAt!: Date;
 
   public readonly Posts?: Post[];
   public readonly Followers?: User[];
@@ -29,6 +29,7 @@ class User extends Model {
   public removeFollower!: BelongsToManyRemoveAssociationMixin<User, number>;
   public getPosts!: HasManyGetAssociationsMixin<Post>;
 }
+
 User.init(
   {
     nickname: {
@@ -45,13 +46,14 @@ User.init(
     },
   },
   {
-    sequelize, //model을 실제 db와 연결시켜줌
+    sequelize,
     modelName: 'User',
     tableName: 'user',
     charset: 'utf8',
     collate: 'utf8_general_ci',
   },
 );
+
 export const associate = (db: dbType) => {
   db.User.hasMany(db.Post, { as: 'Posts' });
   db.User.hasMany(db.Comment);
@@ -59,4 +61,5 @@ export const associate = (db: dbType) => {
   db.User.belongsToMany(db.User, { through: 'Follow', as: 'Followers', foreignKey: 'followingId' });
   db.User.belongsToMany(db.User, { through: 'Follow', as: 'Followings', foreignKey: 'followerId' });
 };
+
 export default User;

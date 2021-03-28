@@ -71,4 +71,4 @@ router.get<any, any, any, { lastId: string; limit: string }>('/:hashtag', async 
   }
 });
 
-module.exports = router;
+export default router;
