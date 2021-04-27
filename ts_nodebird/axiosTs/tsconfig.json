@@ -1,0 +1,7 @@
+{
+    "compilerOptions":{
+        "strict":true,
+        "declaration":true,//create index.d.ts file
+        "lib":["dom","ES2020"]
+    }
+}
